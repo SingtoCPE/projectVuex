@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import VueLocalStorage from 'vue-localstorage'
 
 Vue.use(Vuex);
+Vue.use(VueLocalStorage)
 
 const endpoint = 'http://localhost:3000/employee';
 const endpointDel = 'http://localhost:3000/employee/del';
@@ -51,7 +53,7 @@ export const store = new Vuex.Store({
       dispatch('getData');
     },
     async loginData({_},{user,password}){
-      await axios({
+      const {data} = await axios({
         method:'post',
         url: endpointLogin,
         data:{
@@ -59,6 +61,8 @@ export const store = new Vuex.Store({
           password
         }
       })
+      console.log(data);
+      Vue.localStorage.set('AuthToken', data.token)
     }
   }
 })

@@ -40,7 +40,7 @@ export default {
   methods: {
     getData() {
       this.$store.dispatch("getData");
-    }
+    },
   }
 };
 </script>
