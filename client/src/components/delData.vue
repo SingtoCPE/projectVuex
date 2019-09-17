@@ -1,9 +1,12 @@
 <template>
-  <button @click="delData(id)">Del</button>
+  <div class="delData">
+    <button @click="delData(id)">DEL</button>
+  </div>
 </template>
+
 <script>
 export default {
-  name:'delData',
+  name: 'delData',
   props:{
     id:{
       type:Number,
@@ -12,8 +15,10 @@ export default {
   },
   methods:{
     delData(id){
-      this.$store.dispatch('delData',id)
+      this.$store.dispatch('delData',id);
     }
   }
 }
 </script>
+
+</style>
